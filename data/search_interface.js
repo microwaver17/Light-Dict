@@ -13,8 +13,9 @@ function onClick(e){
 // do search when specific keys are pressed
 document.addEventListener('keydown', onKeydown);
 function onKeydown(e){
+    console.log('"'+e.key+'"');
     if (
-        (trigger.key === '' || trigger.key == e.key) &&
+        (trigger.key == e.key || trigger.key === '') &&
         (trigger.ctrl == e.ctrlKey) &&
         (trigger.alt == e.altKey) &&
         (trigger.shift == e.shiftKey) &&

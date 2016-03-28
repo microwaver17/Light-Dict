@@ -1,4 +1,4 @@
-#header, #header *, .onseiSwf, .onseiSwf *{
+#header, #header *{
     height: 0 !important;
     width: 0 !important;
     visibility: hidden !important;
@@ -6,24 +6,9 @@
     margin: 0 !important;
 }
 
-.content{
-    padding: 0 !important;
-    margin: 0 !important;
+.ad{
+  margin: 0;
 }
-
-.ttlArea{
-  padding: 0 !important;
-  margin: 0 !important;
-  display: inline-block !important;
-  width: 90%;
-}
-
-.ad, .ad *{
-    min-height: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-}
-
 /*
 .ad, .ad *{
     height: 0 !important;

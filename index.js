@@ -1,28 +1,17 @@
-var button = require('sdk/ui/button/action');
 var tabs = require('sdk/tabs');
 var sdk_panel = require('sdk/panel');
 var prefs = require('sdk/simple-prefs').prefs
 
+var mydebug = require('./debug.js')
+
 // テスト用のボタン
 // button for test purpose
-var testbutton = {
-    id: 'toolbar-button',
-    label: 'Light Dict',
-    icon: {
-        '16': './icon-dict-16.png',
-        '32': './icon-dict-32.png',
-        '64': './icon-dict-64.png'
-    },
-    onClick: function(){
-        tabs.open('http://competitions.cr.yp.to/');
-    }
-};
-button.ActionButton(testbutton);
+mydebug.enableDebug();
 
 // すべてのページに制御スクリプトを挿入
 // add control script to all pages
 tabs.on('ready', function(tab){
-    worker = tab.attach({
+    var worker = tab.attach({
         contentScriptFile: './search_interface.js',
         contentScriptOptions: {trigger: getTrigeerKey()}
     });
