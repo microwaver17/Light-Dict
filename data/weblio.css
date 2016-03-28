@@ -1,20 +1,17 @@
-#header, #header *{
-    height: 0 !important;
-    width: 0 !important;
-    visibility: hidden !important;
-    padding: 0 !important;
-    margin: 0 !important;
+#header{
+  display: none;
 }
 
 .ad{
-  margin: 0;
+  margin: 0 !important;
 }
+
+.ydnContSmpHead .ydnSwCls{
+  min-height: 0 !important;
+}
+
 /*
-.ad, .ad *{
-    height: 0 !important;
-    width: 0 !important;
-    visibility: hidden !important;
-    padding: 0 !important;
-    margin: 0 !important;
+.ad{
+  display: none;
 }
 */

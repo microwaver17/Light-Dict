@@ -1,0 +1,17 @@
+#hdWrap, .wordtop{
+  display: none !important;
+}
+
+#hdWrap div{
+  height: auto !important;
+}
+
+#mainTitle, #mainTitle h1, .ex{
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+/*
+#hdWrap center{
+  display: none;
+}
+*/

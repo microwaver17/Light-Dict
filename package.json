@@ -1,8 +1,8 @@
 {
     "title": "Light Dict",
     "name": "lightdict",
-    "version": "0.0.1",
-    "description": "英単語をWeblioで検索してポップアップ表示します。",
+    "version": "0.0.3",
+    "description": "英単語を辞書サイトで検索してポップアップ表示します。",
     "author": "microwaver17",
     "homepage": "http://mw17.hatenablog.jp/entry/software/lightdict",
     "icon": "resource://@lightdict/data/icon-dict-48.png",
@@ -61,6 +61,17 @@
             "type": "integer",
             "value": 300,
             "hidden": false
+        },
+        {
+            "name": "site",
+            "title": "辞書サイト",
+            "type": "menulist",
+            "value": "weblio",
+            "options": [
+                {"value": "weblio", "label": "Weblio"},
+                {"value": "goo", "label": "goo辞書"},
+                {"value": "kotobank", "label": "コトバンク"}
+            ]
         }
     ]
 

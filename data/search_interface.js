@@ -14,8 +14,12 @@ function onClick(e){
 document.addEventListener('keydown', onKeydown);
 function onKeydown(e){
     console.log('"'+e.key+'"');
+    console.log('"'+e.ctrlKey+'"');
+    console.log('"'+e.altKey+'"');
+    console.log('"'+e.shiftKey+'"');
+    console.log('"'+e.metaKey+'"');
     if (
-        (trigger.key == e.key || trigger.key === '') &&
+        (trigger.key === '' || trigger.key == e.key) &&
         (trigger.ctrl == e.ctrlKey) &&
         (trigger.alt == e.altKey) &&
         (trigger.shift == e.shiftKey) &&
@@ -41,7 +45,7 @@ function search_word(){
 
     // 字数制限
     // limit string length
-    var selected_text = match[0].substring(0, 64);
+    var selected_text = match[0].substring(0, 64).trim();
     console.log(selected_text);
     if (selected_text === ""){
         return;
