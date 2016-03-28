@@ -1,0 +1,67 @@
+{
+    "title": "Light Dict",
+    "name": "lightdict",
+    "version": "0.0.1",
+    "description": "英単語をWeblioで検索してポップアップ表示します。",
+    "author": "microwaver17",
+    "homepage": "http://mw17.hatenablog.jp/entry/software/lightdict",
+    "icon": "resource://@lightdict/data/icon-dict-48.png",
+    "license": "MIT",
+    "main": "index.js",
+    "engines": {
+      "firefox": ">=38.0a1"
+    },
+
+    "preferences": [
+        {
+            "name": "trigger_key",
+            "title": "Trigger Key",
+            "type": "string",
+            "value": "",
+            "hidden": true
+        },
+        {
+            "name": "trigger_ctrl",
+            "title": "Control",
+            "type": "bool",
+            "value": false,
+            "hidden": false
+        },
+        {
+            "name": "trigger_alt",
+            "title": "Alt",
+            "type": "bool",
+            "value": false,
+            "hidden": false
+        },
+        {
+            "name": "trigger_shift",
+            "title": "Shift",
+            "type": "bool",
+            "value": true,
+            "hidden": false
+        },
+        {
+            "name": "trigger_meta",
+            "title": "Meta",
+            "type": "bool",
+            "value": false,
+            "hidden": false
+        },
+        {
+            "name": "panel_width",
+            "title": "幅",
+            "type": "integer",
+            "value": 300,
+            "hidden": false
+        },
+        {
+            "name": "panel_height",
+            "title": "高さ",
+            "type": "integer",
+            "value": 300,
+            "hidden": false
+        }
+    ]
+
+}
