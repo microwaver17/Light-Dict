@@ -46,13 +46,23 @@ var debugbutton = {
   }
 };
 
-// 検索するサイトを変える
-// change dictionary service to search
 function atatchScript(tab){
   var worker = tab.attach({contentScriptFile: './debug_page.js'});
+
+  // 検索するサイトを変える
+  // change dictionary service to search
   worker.port.on('setSite', function(site){
     console.log(site);
     prefs.site = site;
+  });
+
+  // トリガーキーを変える
+  // change trigger keys
+  worker.port.on('setTriggerKeys', function(obj){
+    prefs.trigger_shift = obj.shift;
+    prefs.trigger_ctrl = obj.ctrl;
+    prefs.trigger_alt = obj.alt;
+    prefs.trigger_meta = obj.meta;
   });
 }
 
