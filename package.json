@@ -22,49 +22,50 @@
         },
         {
             "name": "trigger_ctrl",
-            "title": "Control",
+            "title": "Controlキー",
             "type": "bool",
             "value": false,
             "hidden": false
         },
         {
             "name": "trigger_alt",
-            "title": "Alt",
+            "title": "Altキー",
+            "type": "bool",
             "type": "bool",
             "value": false,
             "hidden": false
         },
         {
             "name": "trigger_shift",
-            "title": "Shift",
+            "title": "Shiftキー",
             "type": "bool",
             "value": true,
             "hidden": false
         },
         {
             "name": "trigger_meta",
-            "title": "Meta",
+            "title": "Metaキー",
             "type": "bool",
             "value": false,
             "hidden": false
         },
         {
             "name": "panel_width",
-            "title": "幅",
+            "title": "ポップアップパネル 幅",
             "type": "integer",
             "value": 300,
             "hidden": false
         },
         {
             "name": "panel_height",
-            "title": "高さ",
+            "title": "ポップアップパネル 高さ",
             "type": "integer",
             "value": 300,
             "hidden": false
         },
         {
             "name": "site",
-            "title": "辞書サイト",
+            "title": "使用する辞書サイト",
             "type": "menulist",
             "value": "weblio",
             "options": [
