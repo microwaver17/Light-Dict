@@ -22,11 +22,13 @@ function onKeydown(e){
     }
 }
 function onKeyup(e){
+    /*
     console.log('"'+e.key+'"');
     console.log('"'+e.ctrlKey+'"');
     console.log('"'+e.altKey+'"');
     console.log('"'+e.shiftKey+'"');
     console.log('"'+e.metaKey+'"');
+    */
     if (
         (e.key === pressed_key) &&
         (
