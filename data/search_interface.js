@@ -10,11 +10,16 @@ function onClick(e){
 }
 // 設定されたボタンが離された時に検索開始
 // do search when a specific key is released
-var pressed_key = "non key";
+var pressed_key = "non_key";
+var valid_keys = ["Control", "Alt", "Shift", "OS", "Meta"]
 document.addEventListener('keydown', onKeydown);
 document.addEventListener('keyup', onKeyup);
 function onKeydown(e){
-    pressed_key = e.key;
+    if (valid_keys.indexOf(e.key) != -1){
+        pressed_key = e.key;
+    }else{
+        pressed_key = "non_key";
+    }
 }
 function onKeyup(e){
     console.log('"'+e.key+'"');
@@ -24,12 +29,13 @@ function onKeyup(e){
     console.log('"'+e.metaKey+'"');
     if (
         (e.key === pressed_key) &&
-        (trigger.key === '' || trigger.key == e.key) &&
-        (trigger.ctrl === (e.key === "Control")) &&
-        (trigger.alt === (e.key === 'Alt')) &&
-        (trigger.shift === (e.key === 'Shift')) &&
-        (trigger.meta === (e.key === 'OS')) &&
-        (trigger.meta === (e.key === 'Meta'))
+        (
+          (trigger.ctrl  && (e.key === "Control")) ||
+          (trigger.alt   && (e.key === 'Alt')) ||
+          (trigger.shift && (e.key === 'Shift')) ||
+          (trigger.meta  && (e.key === 'OS')) ||
+          (trigger.meta  && (e.key === 'Meta'))
+        )
        )
     {
         search_word();
@@ -39,7 +45,7 @@ function onKeyup(e){
     // また、他のキーと同時押しの時(Ctrl + Fなど)を除くため
     // detect whether a key is holding down and fires keyupevent repeatedly
     // and ignore when a key is pressed as a shortcut key (like CTRL + F)
-    pressed_key = "non key";
+    pressed_key = "non_key";
 }
 
 // 検索を実行

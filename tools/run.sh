@@ -1,11 +1,15 @@
 #!/bin/sh
 
 profile=`pwd | sed -e "s/^.*\///g"`
+firefox=`which firefox-nightly`
 echo make sure to be profile \"$profile\"
 
-if [ "$1" == "-n" ]
+if [ "$1" == "-noinstall" ]
 then
-  jpm run -b `which firefox-nightly` -p $profile --debug
+  $firefox -p $profile
+elif [ "$1" == "-nodebug" ]
+then
+  jpm run -b $firefox -p $profile
 else
-  jpm run -b `which firefox` -p $profile --debug
+  jpm run -b $firefox -p $profile --debug
 fi
