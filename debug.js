@@ -37,11 +37,7 @@ exports.enableDebug = function(){
 var debugbutton = {
   id: 'toolbar-button',
   label: 'Light Dict',
-  icon: {
-      '16': './icon-dict-16.png',
-      '32': './icon-dict-32.png',
-      '64': './icon-dict-64.png'
-  },
+  icon: './icon-debug-16.png',
   onClick: function(){
       tabs.open({
         url: './debug_page.html',

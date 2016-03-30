@@ -1,7 +1,7 @@
 {
     "title": "Light Dict",
     "name": "lightdict",
-    "version": "0.0.3",
+    "version": "0.1.0testing1",
     "description": "英単語を辞書サイトで検索してポップアップ表示します。",
     "author": "microwaver17",
     "homepage": "http://mw17.hatenablog.jp/entry/software/lightdict",
@@ -9,7 +9,7 @@
     "license": "MIT",
     "main": "index.js",
     "engines": {
-      "firefox": ">=38.0a1"
+      "firefox": ">=38.0a1 || <=48.0a1"
     },
 
     "preferences": [

@@ -1,13 +1,17 @@
 var tabs = require('sdk/tabs');
 var sdk_panel = require('sdk/panel');
 var prefs = require('sdk/simple-prefs').prefs
+var sdk_self = require('sdk/self')
 
 var sitesource = require('./sitesource.js');
 var mydebug = require('./debug.js')
 
 // テスト用のボタンを追懐
 // add a button for test purpose
-// mydebug.enableDebug();
+console.log(sdk_self.version);
+if(sdk_self.version.contains('testing')){
+  mydebug.enableDebug();
+}
 
 // すべてのページに制御スクリプトを挿入
 // add control script to all pages

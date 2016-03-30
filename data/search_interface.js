@@ -1,33 +1,45 @@
 var trigger = self.options.trigger;
-var pos_x = 0;
-var pos_y = 0;
-
 // パネルが出る場所を保存
 // hold position panel will show
+var pos_x = 0;
+var pos_y = 0;
 document.addEventListener('click', onClick);
 function onClick(e){
     pos_x = e.clientX;
     pos_y = e.clientY;
 }
-// 設定されたボタンが押された時に検索開始
-// do search when specific keys are pressed
+// 設定されたボタンが離された時に検索開始
+// do search when a specific key is released
+var pressed_key = "non key";
 document.addEventListener('keydown', onKeydown);
+document.addEventListener('keyup', onKeyup);
 function onKeydown(e){
+    pressed_key = e.key;
+}
+function onKeyup(e){
     console.log('"'+e.key+'"');
     console.log('"'+e.ctrlKey+'"');
     console.log('"'+e.altKey+'"');
     console.log('"'+e.shiftKey+'"');
     console.log('"'+e.metaKey+'"');
     if (
+        (e.key === pressed_key) &&
         (trigger.key === '' || trigger.key == e.key) &&
-        (trigger.ctrl == e.ctrlKey) &&
-        (trigger.alt == e.altKey) &&
-        (trigger.shift == e.shiftKey) &&
-        (trigger.meta == e.metaKey)
+        (trigger.ctrl === (e.key === "Control")) &&
+        (trigger.alt === (e.key === 'Alt')) &&
+        (trigger.shift === (e.key === 'Shift')) &&
+        (trigger.meta === (e.key === 'OS')) &&
+        (trigger.meta === (e.key === 'Meta'))
        )
     {
         search_word();
+
     }
+    // キーが押しっぱなしの繰り返しでの入力かしらべる為の処理
+    // また、他のキーと同時押しの時(Ctrl + Fなど)を除くため
+    // detect whether a key is holding down and fires keyupevent repeatedly
+    // and ignore when a key is pressed as a shortcut key (like CTRL + F)
+    pressed_key = "non key";
 }
 
 // 検索を実行

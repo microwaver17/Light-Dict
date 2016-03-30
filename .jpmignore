@@ -12,9 +12,8 @@ Session.vim
 # auto-generated tag files
 tags
 
-# xpi package
+# other
+tools
 *.xpi
 *.svg
-.git
-
-
+.*
