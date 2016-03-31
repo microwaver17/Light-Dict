@@ -18,3 +18,5 @@ setListener('set_allkeys', 'setTriggerKeys',
     { ctrl: true, alt: true, meta: true, shift: true });
 setListener('set_shiftkey', 'setTriggerKeys', 
     { ctrl: false, alt: false, meta: false, shift: true });
+setListener('set_ctrlkey', 'setTriggerKeys', 
+    { ctrl: true, alt: false, meta: false, shift: false });
