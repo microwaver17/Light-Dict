@@ -53,22 +53,40 @@ function onKeyup(e){
 // 検索を実行
 // do search
 function search_word(){
-    var raw = window.getSelection().toString();
-    console.log(raw);
-
-    // 英字と空白のみ
-    // latin character and whitespace only
-    var match = raw.match(/^[a-zA-Z ]+/);
-    if (match == null){
-        return;
-    }
-
-    // 字数制限
+    // 字数を制限する
     // limit string length
-    var selected_text = match[0].substring(0, 64).trim();
-    console.log(selected_text);
+    var raw = window.getSelection().toString().substring(0, 64);
+    console.log('raw: ' + raw);
+
+    var selected_text = word_extract(raw);
+    console.log('extracted: ' + selected_text);
     if (selected_text === ""){
         return;
     }
+
     self.port.emit("searchWord", selected_text, pos_x, pos_y);
+}
+
+// 単語の取り出し
+// word extract
+function word_extract(raw){
+    // 余計な記号を除去
+    // remove no word symbols
+    raw = raw.replace(/[",:;!\?\/]/g, '');
+
+    // 英字と空白といくつかの記号（e.g. cant't などの時）のみ受領する
+    // accept latin character, whitespace and some symbols (for example "e.g.", "can't") only
+    var match = raw.match(/^[a-zA-Z'-\.\s]+$/);
+    if (match == null){
+        return '';
+    }
+
+    // 不要な文字などの処理
+    // process unnecessary characters
+    var text = match[0].trim();
+    text = text.replace(/\s+/g, ' '); // 複数スペース (\sでマッチするもの) を単一スペースにまとめる
+    text = text.replace(/\.+$/g, '');  // 末尾のドットを削除
+    text = text.replace(/^\.+/g, '');  // 先頭のドットを削除
+
+    return text.toLowerCase();
 }
