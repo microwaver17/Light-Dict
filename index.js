@@ -61,8 +61,14 @@ function searchWord(word, pos_x, pos_y){
     // 辞書ページの読み込みが終わったら表示する
     // show dictionary panel have been loaded
     panel.port.on('loaded', function(){
-      panel.show();
-      loader_panel.hide();
+      if (loader_panel.isShowing){
+        panel.show();
+        loader_panel.destroy();
+      // キャンセルされてたら
+      // if cancelled
+      }else{
+        loader_panel.destroy();
+      }
     });
 }
 
