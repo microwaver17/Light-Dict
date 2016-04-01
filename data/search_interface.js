@@ -72,7 +72,7 @@ function search_word(){
 function word_extract(raw){
     // 余計な記号を除去
     // remove no word symbols
-    raw = raw.replace(/[",:;!\?\/]/g, '');
+    raw = raw.replace(/[",:;!\?\/\(\)]/g, '');
 
     // 英字と空白といくつかの記号（e.g. cant't などの時）のみ受領する
     // accept latin character, whitespace and some symbols (for example "e.g.", "can't") only
