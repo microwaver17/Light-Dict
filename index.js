@@ -26,6 +26,8 @@ tabs.on('ready', function(tab){
 // 検索結果パネル表示
 // show search result panel
 //   word: search query
+var panel = null;
+var loader_panel = null;
 function searchWord(word, pos_x, pos_y){
     console.log(word);
     var width = sizeLimit(prefs.panel_width);
@@ -34,7 +36,7 @@ function searchWord(word, pos_x, pos_y){
 
     // 辞書ページのパネル
     // dictionary page panel
-    var panel = sdk_panel.Panel({
+    panel = sdk_panel.Panel({
         width: width,
         height: height,
         position: {
@@ -48,7 +50,7 @@ function searchWord(word, pos_x, pos_y){
     });
     // 読み込み中にスピナーを表示するパネル
     // spinner panel show during loading
-    var loader_panel = sdk_panel.Panel({
+    loader_panel = sdk_panel.Panel({
         width: 40,
         height: 40,
         position: {
@@ -63,11 +65,11 @@ function searchWord(word, pos_x, pos_y){
     panel.port.on('loaded', function(){
       if (loader_panel.isShowing){
         panel.show();
-        loader_panel.destroy();
+        loader_panel.hide();
       // キャンセルされてたら
       // if cancelled
       }else{
-        loader_panel.destroy();
+        loader_panel.hide();
       }
     });
 }
