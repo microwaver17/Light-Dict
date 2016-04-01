@@ -26,13 +26,17 @@ tabs.on('ready', function(tab){
 // 検索結果パネル表示
 // show search result panel
 //   word: search query
+var panel = null;
+var loader_panel = null;
 function searchWord(word, pos_x, pos_y){
     console.log(word);
     var width = sizeLimit(prefs.panel_width);
     var height = sizeLimit(prefs.panel_height);
     var site = prefs.site;
 
-    var panel = sdk_panel.Panel({
+    // 辞書ページのパネル
+    // dictionary page panel
+    panel = sdk_panel.Panel({
         width: width,
         height: height,
         position: {
@@ -44,7 +48,30 @@ function searchWord(word, pos_x, pos_y){
         contentScriptFile: sitesource.getScriptUrl(site),
         contentScriptWhen: 'start',
     });
-    panel.show();
+    // 読み込み中にスピナーを表示するパネル
+    // spinner panel show during loading
+    loader_panel = sdk_panel.Panel({
+        width: 40,
+        height: 40,
+        position: {
+            top: pos_y + 20,
+            left: pos_x
+        },
+        contentURL: './panel_loader.html',
+    });
+    loader_panel.show();
+    // 辞書ページの読み込みが終わったら表示する
+    // show dictionary panel have been loaded
+    panel.port.on('loaded', function(){
+      if (loader_panel.isShowing){
+        panel.show();
+        loader_panel.hide();
+      // キャンセルされてたら
+      // if cancelled
+      }else{
+        loader_panel.hide();
+      }
+    });
 }
 
 function getTrigeerKey(){
