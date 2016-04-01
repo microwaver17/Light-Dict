@@ -32,6 +32,8 @@ function searchWord(word, pos_x, pos_y){
     var height = sizeLimit(prefs.panel_height);
     var site = prefs.site;
 
+    // 辞書ページのパネル
+    // dictionary page panel
     var panel = sdk_panel.Panel({
         width: width,
         height: height,
@@ -44,7 +46,24 @@ function searchWord(word, pos_x, pos_y){
         contentScriptFile: sitesource.getScriptUrl(site),
         contentScriptWhen: 'start',
     });
-    panel.show();
+    // 読み込み中にスピナーを表示するパネル
+    // spinner panel show during loading
+    var loader_panel = sdk_panel.Panel({
+        width: 40,
+        height: 40,
+        position: {
+            top: pos_y + 20,
+            left: pos_x
+        },
+        contentURL: './panel_loader.html',
+    });
+    loader_panel.show();
+    // 辞書ページの読み込みが終わったら表示する
+    // show dictionary panel have been loaded
+    panel.port.on('loaded', function(){
+      panel.show();
+      loader_panel.hide();
+    });
 }
 
 function getTrigeerKey(){
