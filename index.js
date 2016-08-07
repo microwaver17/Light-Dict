@@ -9,7 +9,7 @@ var mydebug = require('./debug.js')
 // テスト用のボタンを追懐
 // add a button for test purpose
 console.log(sdk_self.version);
-if(sdk_self.version.contains('testing')){
+if(sdk_self.version.includes('testing')){
   mydebug.enableDebug();
 }
 
