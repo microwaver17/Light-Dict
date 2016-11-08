@@ -1,10 +1,10 @@
 var tabs = require('sdk/tabs');
 var sdk_panel = require('sdk/panel');
-var prefs = require('sdk/simple-prefs').prefs
-var sdk_self = require('sdk/self')
+var prefs = require('sdk/simple-prefs').prefs;
+var sdk_self = require('sdk/self');
 
 var sitesource = require('./sitesource.js');
-var mydebug = require('./debug.js')
+var mydebug = require('./debug.js');
 
 // テスト用のボタンを追懐
 // add a button for test purpose
@@ -44,8 +44,8 @@ function searchWord(word, pos_x, pos_y){
             left: pos_x
         },
         contentURL: sitesource.getWebsiteUrl(word, site),
-        contentStyleFile: sitesource.getStyleUrl(site),
-        contentScriptFile: sitesource.getScriptUrl(site),
+        contentStyleFile: ['./panel_common.css', './panel_'+site+'.css'],
+        contentScriptFile: ['./panel_common.js', './panel_'+site+'.js'],
         contentScriptWhen: 'start',
     });
     // 読み込み中にスピナーを表示するパネル
@@ -57,7 +57,7 @@ function searchWord(word, pos_x, pos_y){
             top: pos_y + 20,
             left: pos_x
         },
-        contentURL: './panel_loader.html',
+        contentURL: './panel_spinner.html',
     });
     loader_panel.show();
     // 辞書ページの読み込みが終わったら表示する
