@@ -6,7 +6,7 @@ var prefs = require('sdk/simple-prefs').prefs
 // この関数を呼ぶとデバッグボタンが有効になる
 // this method enables debug button
 exports.enableDebug = function(){
-  
+
   // ボタンを追加
   // add button to toolbar
   buttons.ActionButton(debugbutton);

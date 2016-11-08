@@ -10,13 +10,14 @@ function setListener(id, dest, obj){
 setListener('set_weblio', 'setSite', 'weblio');
 setListener('set_kotobank', 'setSite', 'kotobank');
 setListener('set_goo', 'setSite', 'goo');
+setListener('set_urbandic', 'setSite', 'urbandic');
 setListener('set_null', 'setSite', 'null');
 
 // ボタンをクリックでトリガーキーを変える
 // change trigger keys buttons
-setListener('set_allkeys', 'setTriggerKeys', 
+setListener('set_allkeys', 'setTriggerKeys',
     { ctrl: true, alt: true, meta: true, shift: true });
-setListener('set_shiftkey', 'setTriggerKeys', 
+setListener('set_shiftkey', 'setTriggerKeys',
     { ctrl: false, alt: false, meta: false, shift: true });
-setListener('set_ctrlkey', 'setTriggerKeys', 
+setListener('set_ctrlkey', 'setTriggerKeys',
     { ctrl: true, alt: false, meta: false, shift: false });

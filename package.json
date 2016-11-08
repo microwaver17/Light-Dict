@@ -71,7 +71,8 @@
             "options": [
                 {"value": "weblio", "label": "Weblio"},
                 {"value": "goo", "label": "goo辞書"},
-                {"value": "kotobank", "label": "コトバンク"}
+                {"value": "kotobank", "label": "コトバンク"},
+                {"value": "urbandic", "label": "Urban Dictionary"}
             ]
         }
     ]
