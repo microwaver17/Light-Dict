@@ -1,13 +1,21 @@
 var trigger = self.options.trigger;
+
 // パネルが出る場所を保存
 // hold position panel will show
 var pos_x = 0;
 var pos_y = 0;
-document.addEventListener('click', onClick);
-function onClick(e){
+document.addEventListener('mousedown', onMouseDown);
+document.addEventListener('mouseup', onMouseUp);
+function onMouseDown(e){
     pos_x = e.clientX;
     pos_y = e.clientY;
 }
+function onMouseUp(e){
+    // mousedown と mouseup の座標の中間に表示させる
+    pos_x = pos_x + (e.clientX - pos_x) / 2;
+    pos_y = pos_y + (e.clientY - pos_y) / 2;
+}
+
 // 設定されたボタンが離された時に検索開始
 // do search when a specific key is released
 var pressed_key = "non_key";
