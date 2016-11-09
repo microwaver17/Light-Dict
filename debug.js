@@ -51,15 +51,31 @@ function atatchScript(tab){
 
   // 検索するサイトを変える
   // change dictionary service to search
-  worker.port.on('setSite', function(site){
+  worker.port.on('setSite', function(obj){
     console.log(site);
-    prefs.site_1 = site;
+    var num = obj[0];
+    var site = obj[1];
+    if (num == 1){
+        prefs.site_1 = site;
+    }
+    if (num == 2){
+        prefs.use_2 = true;
+        prefs.site_2 = site;
+    }
   });
 
   // トリガーキーを変える
   // change trigger keys
-  worker.port.on('setTriggerKeys', function(key){
-    prefs.trigger_1 = key;
+  worker.port.on('setTriggerKeys', function(obj){
+    var num = obj[0];
+    var key = obj[1];
+    if (num == 1){
+        prefs.trigger_1 = key;
+    }
+    if (num == 2){
+        prefs.use_2 = true;
+        prefs.trigger_2 = key;
+    }
   });
 }
 

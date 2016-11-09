@@ -16,9 +16,15 @@ if(sdk_self.version.includes('testing')){
 // すべてのページに制御スクリプトを挿入
 // add control script to all pages
 tabs.on('ready', function(tab){
+    var trigger_2 = 'none';
+    if (prefs.use_2 == true){
+        trigger_2 = prefs.trigger_2;
+    }
     var worker = tab.attach({
         contentScriptFile: './search_interface.js',
-        contentScriptOptions: {trigger: prefs.trigger_1}
+        contentScriptOptions: {
+            trigger_1: prefs.trigger_1,
+            trigger_2: trigger_2}
     });
     worker.port.on("searchWord", searchWord);
 });
@@ -28,11 +34,17 @@ tabs.on('ready', function(tab){
 //   word: search query
 var panel = null;
 var loader_panel = null;
-function searchWord(word, pos_x, pos_y){
+function searchWord(word, pos_x, pos_y, site_num){
     console.log(word);
     var width = sizeLimit(prefs.panel_width);
     var height = sizeLimit(prefs.panel_height);
-    var site = prefs.site_1;
+    var site = 'none';
+    if (site_num == 1){
+      site = prefs.site_1;
+    }
+    if (site_num == 2){
+      site = prefs.site_2;
+    }
 
     // 辞書ページのパネル
     // dictionary page panel

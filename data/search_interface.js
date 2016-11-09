@@ -1,4 +1,5 @@
-var trigger = self.options.trigger;
+var trigger_1 = self.options.trigger_1;
+var trigger_2 = self.options.trigger_2;
 
 // パネルが出る場所を保存
 // hold position panel will show
@@ -19,7 +20,7 @@ function onMouseUp(e){
 // 設定されたボタンが離された時に検索開始
 // do search when a specific key is released
 var pressed_key = "non_key";
-var valid_keys = ["Control", "Alt", "Shift", "OS", "Meta"]
+var valid_keys = ["Control", "Shift", "OS", "Meta"]
 document.addEventListener('keydown', onKeydown);
 document.addEventListener('keyup', onKeyup);
 function onKeydown(e){
@@ -36,10 +37,16 @@ function onKeyup(e){
     console.log('"'+e.altKey+'"');
     console.log('"'+e.shiftKey+'"');
     console.log('"'+e.metaKey+'"');
-    console.log('"'+trigger+'"');
+    console.log('"'+trigger_1+'"');
+    console.log('"'+trigger_2+'"');
 
-    if ((e.key === pressed_key) && (trigger === e.key))    {
-        search_word();
+    if (e.key === pressed_key){
+        if (trigger_1 === e.key){
+            search_word(1);
+        }
+        if (trigger_2 === e.key){
+            search_word(2);
+        }
     }
     // キーが押しっぱなしの繰り返しでの入力かしらべる為の処理
     // また、他のキーと同時押しの時(Ctrl + Fなど)を除くため
@@ -50,7 +57,7 @@ function onKeyup(e){
 
 // 検索を実行
 // do search
-function search_word(){
+function search_word(site){
     // 字数を制限する
     // limit string length
     var raw = window.getSelection().toString().substring(0, 64);
@@ -62,7 +69,7 @@ function search_word(){
         return;
     }
 
-    self.port.emit("searchWord", selected_text, pos_x, pos_y);
+    self.port.emit("searchWord", selected_text, pos_x, pos_y, site);
 }
 
 // 単語の取り出し

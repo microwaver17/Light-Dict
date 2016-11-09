@@ -15,7 +15,7 @@
     "preferences": [
         {
             "name": "site_1",
-            "title": "1つめの使用する辞書サイト",
+            "title": "1つめの辞書",
             "type": "menulist",
             "value": "weblio",
             "options": [
@@ -28,6 +28,37 @@
         {
             "name": "trigger_1",
             "title": "1つめの検索キー",
+            "type": "menulist",
+            "value": "Shift",
+            "options": [
+                {"value": "Control", "label": "Controlキー"},
+                {"value": "Shift", "label": "Shiftキー"},
+                {"value": "Alt", "label": "Altキー"},
+                {"value": "Meta", "label": "Metaキー"},
+                {"value": "OS", "label": "OSキー"}
+            ]
+        },
+        {
+            "name": "use_2",
+            "title": "2つめの辞書を使用する",
+            "type": "bool",
+            "value": false
+        },
+        {
+            "name": "site_2",
+            "title": "2つめの辞書",
+            "type": "menulist",
+            "value": "weblio",
+            "options": [
+                {"value": "weblio", "label": "Weblio"},
+                {"value": "goo", "label": "goo辞書"},
+                {"value": "kotobank", "label": "コトバンク"},
+                {"value": "urbandic", "label": "Urban Dictionary"}
+            ]
+        },
+        {
+            "name": "trigger_2",
+            "title": "2つめの検索キー",
             "type": "menulist",
             "value": "Shift",
             "options": [
