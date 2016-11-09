@@ -15,9 +15,7 @@ setListener('set_null', 'setSite', 'null');
 
 // ボタンをクリックでトリガーキーを変える
 // change trigger keys buttons
-setListener('set_allkeys', 'setTriggerKeys',
-    { ctrl: true, alt: true, meta: true, shift: true });
-setListener('set_shiftkey', 'setTriggerKeys',
-    { ctrl: false, alt: false, meta: false, shift: true });
-setListener('set_ctrlkey', 'setTriggerKeys',
-    { ctrl: true, alt: false, meta: false, shift: false });
+setListener('set_shiftkey', 'setTriggerKeys', 'Shift');
+setListener('set_ctrlkey', 'setTriggerKeys', 'Control');
+setListener('set_oskey', 'setTriggerKeys', 'OS');
+setListener('set_metakey', 'setTriggerKeys', 'Meta');

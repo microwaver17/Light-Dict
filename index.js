@@ -18,7 +18,7 @@ if(sdk_self.version.includes('testing')){
 tabs.on('ready', function(tab){
     var worker = tab.attach({
         contentScriptFile: './search_interface.js',
-        contentScriptOptions: {trigger: getTrigeerKey()}
+        contentScriptOptions: {trigger: prefs.trigger_1}
     });
     worker.port.on("searchWord", searchWord);
 });
@@ -32,7 +32,7 @@ function searchWord(word, pos_x, pos_y){
     console.log(word);
     var width = sizeLimit(prefs.panel_width);
     var height = sizeLimit(prefs.panel_height);
-    var site = prefs.site;
+    var site = prefs.site_1;
 
     // 辞書ページのパネル
     // dictionary page panel
@@ -72,18 +72,6 @@ function searchWord(word, pos_x, pos_y){
         loader_panel.hide();
       }
     });
-}
-
-function getTrigeerKey(){
-    trigger = {
-        key: prefs.trigger_key,
-        ctrl: prefs.trigger_ctrl,
-        alt: prefs.trigger_alt,
-        shift: prefs.trigger_shift,
-        meta: prefs.trigger_meta
-    };
-
-    return trigger;
 }
 
 var MAX_SIZE = 1000;

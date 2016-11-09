@@ -30,26 +30,16 @@ function onKeydown(e){
     }
 }
 function onKeyup(e){
-    /*
+
     console.log('"'+e.key+'"');
     console.log('"'+e.ctrlKey+'"');
     console.log('"'+e.altKey+'"');
     console.log('"'+e.shiftKey+'"');
     console.log('"'+e.metaKey+'"');
-    */
-    if (
-        (e.key === pressed_key) &&
-        (
-          (trigger.ctrl  && (e.key === "Control")) ||
-          (trigger.alt   && (e.key === 'Alt')) ||
-          (trigger.shift && (e.key === 'Shift')) ||
-          (trigger.meta  && (e.key === 'OS')) ||
-          (trigger.meta  && (e.key === 'Meta'))
-        )
-       )
-    {
-        search_word();
+    console.log('"'+trigger+'"');
 
+    if ((e.key === pressed_key) && (trigger === e.key))    {
+        search_word();
     }
     // キーが押しっぱなしの繰り返しでの入力かしらべる為の処理
     // また、他のキーと同時押しの時(Ctrl + Fなど)を除くため

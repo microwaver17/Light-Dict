@@ -53,16 +53,13 @@ function atatchScript(tab){
   // change dictionary service to search
   worker.port.on('setSite', function(site){
     console.log(site);
-    prefs.site = site;
+    prefs.site_1 = site;
   });
 
   // トリガーキーを変える
   // change trigger keys
-  worker.port.on('setTriggerKeys', function(obj){
-    prefs.trigger_shift = obj.shift;
-    prefs.trigger_ctrl = obj.ctrl;
-    prefs.trigger_alt = obj.alt;
-    prefs.trigger_meta = obj.meta;
+  worker.port.on('setTriggerKeys', function(key){
+    prefs.trigger_1 = key;
   });
 }
 
