@@ -1,4 +1,5 @@
-// a trick
+// 単語ページへの直接アクセスで別のページに飛ばされるのを回避
+// prepend unwanted page navigation due to direct page access
 document.cookie = 'weblio_smlwin_btn = ;';
 
 // Flashのスピーカーマークが変なところに表示されるから、取りあえず削除
