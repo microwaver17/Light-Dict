@@ -7,11 +7,12 @@ var site_config = {
   urbandic: { url: "http://ja.urbandictionary.com/define.php?term=[word]" },
 };
 
-// 単語のページ取得
+// 単語のページURLを生成
+// generate a dictionary page URL
 exports.getWebsiteUrl = function(word, site){
   word = escape(word);
   if (site in site_config ){
-    return site_config[site]['url'].replace(/\[word\]/, word);
+    return site_config[site].url.replace(/\[word\]/, word);
   }else{
     return './error.html';
   }

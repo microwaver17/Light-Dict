@@ -1,14 +1,13 @@
 var tabs = require('sdk/tabs');
 var buttons = require('sdk/ui/button/action');
 var pagemods = require('sdk/page-mod');
-var prefs = require('sdk/simple-prefs').prefs;
 
 // この関数を呼ぶとデバッグボタンが有効になる
-// this method enables debug button
+// calling this method enables debug button
 exports.enableDebug = function(){
 
   // ボタンを追加
-  // add button to toolbar
+  // add a button to the toolbar
   buttons.ActionButton({
     id: 'toolbar-button',
     label: 'Light Dict',
@@ -22,7 +21,7 @@ exports.enableDebug = function(){
   
 
   // パネル表示用のスクリプトを通常表示でも適応
-  // apply js and css for panel to non panel pages
+  // apply panel's .js and .css to non panel pages
   pagemods.PageMod({
     include: "http://ejje.weblio.jp/small/content/*",
     contentStyleFile: './panel_weblio.css',

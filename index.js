@@ -7,14 +7,14 @@ var sitesource = require('./sitesource.js');
 var mydebug = require('./debug.js');
 
 // テスト用のボタンを追懐
-// add a button for test purpose
+// add a button for debug purpose
 console.log(sdk_self.version);
 if(sdk_self.version.includes('testing')){
   mydebug.enableDebug();
 }
 
 // すべてのページに制御スクリプトを挿入
-// add control script to all pages
+// add control scripts to all pages
 tabs.on('ready', function(tab){
     var worker = tab.attach({
         contentScriptFile: './search_interface.js'
@@ -31,8 +31,7 @@ tabs.on('ready', function(tab){
 });
 
 // 検索結果パネル表示
-// show search result panel
-//   word: search query
+// show a searched result panel
 var panel = null;
 var loader_panel = null;
 function searchWord(word, pos_x, pos_y, site_num){
@@ -48,7 +47,7 @@ function searchWord(word, pos_x, pos_y, site_num){
     }
 
     // 辞書ページのパネル
-    // dictionary page panel
+    // a dictionary panel
     panel = sdk_panel.Panel({
         width: width,
         height: height,
@@ -62,7 +61,7 @@ function searchWord(word, pos_x, pos_y, site_num){
         contentScriptWhen: 'start',
     });
     // 読み込み中にスピナーを表示するパネル
-    // spinner panel show during loading
+    // a spinner panel shows during loading
     loader_panel = sdk_panel.Panel({
         width: 40,
         height: 40,
@@ -74,7 +73,7 @@ function searchWord(word, pos_x, pos_y, site_num){
     });
     loader_panel.show();
     // 辞書ページの読み込みが終わったら表示する
-    // show dictionary panel have been loaded
+    // show a dictionary panel after it's contents will be loaded
     panel.port.on('loaded', function(){
       if (loader_panel.isShowing){
         panel.show();
