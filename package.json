@@ -1,7 +1,7 @@
 {
     "title": "Light Dict",
     "name": "lightdict",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "description": "英単語を辞書サイトで検索してポップアップ表示します。",
     "author": "microwaver17",
     "homepage": "http://mw17.hatenablog.jp/entry/software/lightdict",
@@ -9,45 +9,65 @@
     "license": "MIT",
     "main": "index.js",
     "engines": {
-      "firefox": ">=38.0a1 <=51.0a1"
+      "firefox": ">=38.0a1 <=52.0a1"
     },
 
     "preferences": [
         {
-            "name": "trigger_key",
-            "title": "Trigger Key",
-            "type": "string",
-            "value": "",
-            "hidden": true
+            "name": "site_1",
+            "title": "1つめの辞書",
+            "type": "menulist",
+            "value": "weblio",
+            "options": [
+                {"value": "weblio", "label": "Weblio"},
+                {"value": "goo", "label": "goo辞書"},
+                {"value": "kotobank", "label": "コトバンク"},
+                {"value": "urbandic", "label": "Urban Dictionary"}
+            ]
         },
         {
-            "name": "trigger_ctrl",
-            "title": "Controlキー",
-            "type": "bool",
-            "value": false,
-            "hidden": false
+            "name": "trigger_1",
+            "title": "1つめの検索キー",
+            "type": "menulist",
+            "value": "Shift",
+            "options": [
+                {"value": "Control", "label": "Controlキー"},
+                {"value": "Shift", "label": "Shiftキー"},
+                {"value": "Alt", "label": "Altキー"},
+                {"value": "Meta", "label": "Metaキー"},
+                {"value": "OS", "label": "OSキー"}
+            ]
         },
         {
-            "name": "trigger_alt",
-            "title": "Altキー",
+            "name": "use_2",
+            "title": "2つめの辞書を使用する",
             "type": "bool",
-            "type": "bool",
-            "value": false,
-            "hidden": false
+            "value": false
         },
         {
-            "name": "trigger_shift",
-            "title": "Shiftキー",
-            "type": "bool",
-            "value": true,
-            "hidden": false
+            "name": "site_2",
+            "title": "2つめの辞書",
+            "type": "menulist",
+            "value": "weblio",
+            "options": [
+                {"value": "weblio", "label": "Weblio"},
+                {"value": "goo", "label": "goo辞書"},
+                {"value": "kotobank", "label": "コトバンク"},
+                {"value": "urbandic", "label": "Urban Dictionary"}
+            ]
         },
         {
-            "name": "trigger_meta",
-            "title": "Metaキー",
-            "type": "bool",
-            "value": false,
-            "hidden": false
+            "name": "trigger_2",
+            "title": "2つめの検索キー",
+            "type": "menulist",
+            "value": "Shift",
+            "options": [
+                {"value": "Control", "label": "Controlキー"},
+                {"value": "Shift", "label": "Shiftキー"},
+                {"value": "Alt", "label": "Altキー"},
+                {"value": "Meta", "label": "Metaキー"},
+                {"value": "OS", "label": "OSキー"}
+            ]
         },
         {
             "name": "panel_width",
@@ -62,18 +82,6 @@
             "type": "integer",
             "value": 300,
             "hidden": false
-        },
-        {
-            "name": "site",
-            "title": "使用する辞書サイト",
-            "type": "menulist",
-            "value": "weblio",
-            "options": [
-                {"value": "weblio", "label": "Weblio"},
-                {"value": "goo", "label": "goo辞書"},
-                {"value": "kotobank", "label": "コトバンク"}
-            ]
         }
     ]
-
 }

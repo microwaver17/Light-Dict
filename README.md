@@ -1,10 +1,11 @@
 # Light Dict
 英単語を辞書サイトで検索してポップアップ表示します。
-Search a selected word in English-Japanese dictionary webservice and show it in a pop-up window.
+Look up a selected word in an English-Japanese dictionary webservice
+and show it in a pop-up window.
 
-Webページ中の単語を選択し特定のキーを押すと検索されます。デフォルトでは、単語を選択した状態でShiftを押すとWeblioで検索されます。基本的に設定は不要です。
-複数のキーを指定すると、いずれかのキーを押したときに検索されます（同時押しではない）。
-辞書サイトは、Weblio・goo辞書・コトバンクから選択できます。
+Webページ中やFirefox内蔵のPDFビューア内で、英単語を選択し特定のキーを押すと検索されます。デフォルトでは、単語を選択した状態でShiftキーを押すとWeblioで検索されます。
+基本的に設定は不要ですが、キーは2つ設定することができ、それぞれに違う辞書を当てられます。
+辞書サイトは、 Weblio・goo辞書・コトバンク・Urban Dictionary から選択できます。
 
 # License
 The MIT License

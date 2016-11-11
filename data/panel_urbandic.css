@@ -1,0 +1,11 @@
+#urban-top-bar{
+    display: none;
+}
+
+#content .row{
+    display: none;
+}
+
+#content .def-header{
+    margin: 0;
+}
