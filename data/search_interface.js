@@ -1,5 +1,14 @@
-var trigger_1 = self.options.trigger_1;
-var trigger_2 = self.options.trigger_2;
+// トリガキーを取得
+// askTriggerKeyをemitするとsendTriggerKeyにトリガキーが帰って来る
+// emit askTriggerkey, then sendTriggerKey is called back with trigger keys
+var trigger_1;
+var trigger_2;
+self.port.on('sendTriggerKey', function(trg1, trg2){
+  trigger_1 = trg1;
+  trigger_2 = trg2;
+});
+self.port.emit('askTriggerKey');
+
 
 // パネルが出る場所を保存
 // hold position panel will show
@@ -20,18 +29,20 @@ function onMouseUp(e){
 // 設定されたボタンが離された時に検索開始
 // do search when a specific key is released
 var pressed_key = "non_key";
-var valid_keys = ["Control", "Shift", "OS", "Meta"]
+var valid_keys = ["Control", "Shift", "OS", "Meta"];
 document.addEventListener('keydown', onKeydown);
 document.addEventListener('keyup', onKeyup);
 function onKeydown(e){
     if (valid_keys.indexOf(e.key) != -1){
         pressed_key = e.key;
+        // ボタンが離される前にトリガキーの更新を確認
+        // sendTriggerKeyが呼び出されるまでタイムラグがあるので
+        self.port.emit("askTriggerKey");
     }else{
         pressed_key = "non_key";
     }
 }
 function onKeyup(e){
-
     console.log('"'+e.key+'"');
     console.log('"'+e.ctrlKey+'"');
     console.log('"'+e.altKey+'"');
@@ -82,7 +93,7 @@ function word_extract(raw){
     // 英字と空白といくつかの記号（e.g. cant't などの時）のみ受領する
     // accept latin character, whitespace and some symbols (for example "e.g.", "can't") only
     var match = raw.match(/^[a-zA-Z'-\.\s]+$/);
-    if (match == null){
+    if (match === null){
         return '';
     }
 
