@@ -2,9 +2,9 @@ var tabs = require('sdk/tabs');
 var sdk_panel = require('sdk/panel');
 var prefs = require('sdk/simple-prefs').prefs;
 var sdk_self = require('sdk/self');
-
 var sitesource = require('./sitesource.js');
 var mydebug = require('./debug.js');
+var history = require('./history.js');
 
 // テスト用のボタンを追懐
 // add a button for debug purpose
@@ -78,12 +78,16 @@ function searchWord(word, pos_x, pos_y, site_num){
       if (loader_panel.isShowing){
         panel.show();
         loader_panel.hide();
-      // キャンセルされてたら
-      // if cancelled
+
       }else{
+        // キャンセルされてたら
+        // if cancelled
         loader_panel.hide();
       }
     });
+
+    // 検索履歴に追加
+    history.add_word(word);
 }
 
 var MAX_SIZE = 1000;
@@ -97,4 +101,3 @@ function sizeLimit(value){
 
     return value;
 }
-

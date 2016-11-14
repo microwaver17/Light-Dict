@@ -1,7 +1,7 @@
 {
     "title": "Light Dict",
     "name": "lightdict",
-    "version": "0.3.0",
+    "version": "0.3.0-testing",
     "description": "英単語を辞書サイトで検索してポップアップ表示します。",
     "author": "microwaver17",
     "homepage": "http://mw17.hatenablog.jp/entry/software/lightdict",
@@ -13,6 +13,12 @@
     },
 
     "preferences": [
+        {
+            "type": "control",
+            "label": "開く",
+            "name": "openInformation",
+            "title": "検索履歴"
+        },
         {
             "name": "site_1",
             "title": "1つめの辞書",

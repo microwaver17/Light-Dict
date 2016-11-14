@@ -14,6 +14,7 @@ exports.enableDebug = function(){
     icon: './icon-debug-16.png',
     onClick: function(){
       tabs.open("about:addons");
+      tabs.open("resource://lightdict/data/history_page.html");
       tabs.open({
         url: './debug_page.html',
       });
