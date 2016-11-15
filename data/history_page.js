@@ -51,3 +51,13 @@ self.port.on('sendHistory', function(data){
     frequency_table.appendChild(tr);
   }
 });
+
+// 新しいタブで履歴ページを開く
+document.getElementById('open_new_page').addEventListener("click", function(){
+  self.port.emit('open_new_page');
+});
+
+// リロード
+self.port.on('reload', function(){
+  location.reload();
+});

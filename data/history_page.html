@@ -5,19 +5,21 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./bootstrap.min.css">
   </head>
-  <body>
+  <body style="padding-top: 10px; padding-bottom: 30px;">
 
     <div class="container">
 
-      <div class="page-header">
-        <ul class="nav nav-pills pull-right">
-          <li><a href="#frequency">回数順</a></li>
-          <li><a href="#timeorder">時間順</a></li>
-        </ul>
-        <h1 style="word-break: keep-all;">Light Dict <small>単語帳</small></h1>
+      <div class="row" style="position: fixed; bottom: 10px; z-index: 100;">
+        <div class="col-md-12">
+          <div class="btn-group">
+            <a class="btn btn-default" href="#frequency">回数順</a>
+            <a class="btn btn-default" href="#timeorder">時間順</a>
+            <a class="btn btn-default" href="#" id="open_new_page">別ページで開く</a>
+          </div>
+        </div>
       </div>
 
-      <div class="row">
+      <div class="row" style="padding-bottom: 30px;">
         <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
           <h2 id="frequency">回数順</h2>
           <table class="table table-striped">

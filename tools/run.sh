@@ -9,7 +9,7 @@ then
   $firefox -p $profile
 elif [ "$1" == "-debug" ]
 then
-  jpm run -b $firefox -p $profile --debug --binary-args "resource://lightdict/data/debug_page.html"
+  jpm run -b $firefox -p $profile --no-copy --debug --binary-args "resource://lightdict/data/debug_page.html"
 else
-  jpm run -b $firefox -p $profile --binary-args "resource://lightdict/data/debug_page.html"
+  jpm run -b $firefox -p $profile --no-copy --binary-args "resource://lightdict/data/debug_page.html"
 fi

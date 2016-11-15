@@ -5,8 +5,14 @@ var pageMod = require('sdk/page-mod');
 
 // 単語を履歴に追加
 var max_history = 1000;
+var prev_word = '';
 exports.add_word = function(word){
   console.log('history: ' + word);
+
+  // 重複検索
+  if (word === prev_word){
+    return;
+  }
 
   if (!('history' in  ss.storage)){
     ss.storage.history = [];
@@ -25,6 +31,11 @@ exports.add_word = function(word){
   }
 
 };
+
+// 外部で履歴を使用したい時
+exports.get_history = function(){
+  return ss.storage.history;
+}
 
 // 履歴閲覧ページにスクリプトを追加
 pageMod.PageMod({

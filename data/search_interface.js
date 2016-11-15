@@ -66,8 +66,15 @@ function onKeyup(e){
     pressed_key = "non_key";
 }
 
-// 検索を実行
-// do search
+// ツールバーのクリックでの検索 
+// search by clicking the button on the toolbar
+window.addEventListener("toolbar_search" , function(){
+  console.log('toolbar_search');
+  search_word(1);
+});
+
+
+// 実際の検索
 function search_word(site){
     // 字数を制限する
     // limit string length
@@ -77,10 +84,11 @@ function search_word(site){
     var selected_text = word_extract(raw);
     console.log('extracted: ' + selected_text);
     if (selected_text === ""){
-        return;
+        return false;
     }
-
     self.port.emit("searchWord", selected_text, pos_x, pos_y, site);
+
+    return true;
 }
 
 // 単語の取り出し

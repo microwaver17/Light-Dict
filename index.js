@@ -6,6 +6,9 @@ var sdk_self = require('sdk/self');
 var sitesource = require('./sitesource.js');
 var mydebug = require('./debug.js');
 var history = require('./history.js');
+var mybutton = require('./button.js');
+
+mybutton.enableButton();
 
 // テスト用のボタンを追懐
 // add a button for debug purpose
