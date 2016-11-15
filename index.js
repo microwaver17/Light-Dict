@@ -2,6 +2,7 @@ var tabs = require('sdk/tabs');
 var sdk_panel = require('sdk/panel');
 var prefs = require('sdk/simple-prefs').prefs;
 var sdk_self = require('sdk/self');
+
 var sitesource = require('./sitesource.js');
 var mydebug = require('./debug.js');
 var history = require('./history.js');
@@ -36,6 +37,7 @@ var panel = null;
 var loader_panel = null;
 function searchWord(word, pos_x, pos_y, site_num){
     console.log(word);
+    
     var width = sizeLimit(prefs.panel_width);
     var height = sizeLimit(prefs.panel_height);
     var site = 'none';

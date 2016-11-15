@@ -11,13 +11,16 @@
     "engines": {
       "firefox": ">=38.0a1 <=52.0a1"
     },
+    "permissions": {
+      "multiprocess": true
+    },
 
     "preferences": [
         {
             "type": "control",
             "label": "開く",
             "name": "openInformation",
-            "title": "検索履歴"
+            "title": "単語帳（検索履歴）"
         },
         {
             "name": "site_1",

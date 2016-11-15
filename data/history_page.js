@@ -42,11 +42,11 @@ self.port.on('sendHistory', function(data){
   for (i = 0; i < sorted.length; i++){
     tr = document.createElement('tr');
     td = document.createElement('td');
-    td.textContent = sorted[i].word;;
+    td.textContent = '' + sorted[i].count;
     tr.appendChild(td);
     
     td = document.createElement('td');
-    td.textContent = '' + sorted[i].count;
+    td.textContent = sorted[i].word;;
     tr.appendChild(td);
     frequency_table.appendChild(tr);
   }
