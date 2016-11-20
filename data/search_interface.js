@@ -68,8 +68,8 @@ function onKeyup(e){
 
 // ツールバーのクリックでの検索 
 // search by clicking the button on the toolbar
-window.addEventListener("toolbar_search" , function(){
-  console.log('toolbar_search');
+window.addEventListener("get_selected_word" , function(){
+  console.log('get_selected_word');
   search_word(1);
 });
 
@@ -81,36 +81,5 @@ function search_word(site){
     var raw = window.getSelection().toString().substring(0, 64);
     console.log('raw: ' + raw);
 
-    var selected_text = word_extract(raw);
-    console.log('extracted: ' + selected_text);
-    if (selected_text === ""){
-        return false;
-    }
-    self.port.emit("searchWord", selected_text, pos_x, pos_y, site);
-
-    return true;
-}
-
-// 単語の取り出し
-// word extract
-function word_extract(raw){
-    // 余計な記号を除去
-    // remove no word symbols
-    raw = raw.replace(/[",:;!\?\/\(\)]/g, '');
-
-    // 英字と空白といくつかの記号（e.g. cant't などの時）のみ受領する
-    // accept latin character, whitespace and some symbols (for example "e.g.", "can't") only
-    var match = raw.match(/^[a-zA-Z'-\.\s]+$/);
-    if (match === null){
-        return '';
-    }
-
-    // 不要な文字などの処理
-    // process unnecessary characters
-    var text = match[0].trim();
-    text = text.replace(/\s+/g, ' '); // 複数スペース (\sでマッチするもの) を単一スペースにまとめる
-    text = text.replace(/\.+$/g, '');  // 末尾のドットを削除
-    text = text.replace(/^\.+/g, '');  // 先頭のドットを削除
-
-    return text.toLowerCase();
+    self.port.emit("searchWord", raw, pos_x, pos_y, site);
 }

@@ -1,7 +1,21 @@
 var ss = require('sdk/simple-storage');
 var sdk_prefs = require('sdk/simple-prefs');
 var tabs = require('sdk/tabs');
-var pageMod = require('sdk/page-mod');
+var sdk_pagemod = require('sdk/page-mod');
+
+// 履歴閲覧ページにスクリプトを追加
+exports.enableHistoryMod = function(){
+  sdk_pagemod.PageMod({
+    include: 'resource://lightdict/data/history_page.html*',
+    contentScriptFile: './history_page.js',
+    onAttach: function(worker){
+      worker.port.on('askHistory', function(){
+        console.log('askHistory');
+        worker.port.emit('sendHistory', exports.get_history());
+      });
+    }
+  });
+};
 
 // 単語を履歴に追加
 var max_history = 1000;
@@ -13,6 +27,7 @@ exports.add_word = function(word){
   if (word === prev_word){
     return;
   }
+  prev_word = word;
 
   if (!('history' in  ss.storage)){
     ss.storage.history = [];
@@ -37,22 +52,3 @@ exports.get_history = function(){
   return ss.storage.history;
 }
 
-// 履歴閲覧ページにスクリプトを追加
-pageMod.PageMod({
-  //include: './history_page.html',
-  include: 'resource://lightdict/data/history_page.html*',
-  contentScriptFile: './history_page.js',
-  onAttach: function(worker){
-    worker.port.on('askHistory', function(){
-      console.log('askHistory');
-      worker.port.emit('sendHistory', ss.storage.history);
-    });
-  }
-});
-
-// 設定画面に検索履歴閲覧ページへのリンクを追加
-sdk_prefs.on('openInformation', function(){
-  tabs.open({
-    url: './history_page.html',
-  });
-});
