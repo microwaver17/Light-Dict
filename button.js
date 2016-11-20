@@ -12,7 +12,7 @@ exports.enableButton = function(){
   button = sdk_ui.ActionButton({
     id: "light_dict",
     label: "Light Dict",
-    icon: "./icon-monodict-64.png",
+    icon: "./icon-monodict-48.png",
     onClick: handleClick
   });
 };
@@ -35,13 +35,17 @@ function handleClick(){
     //panel.show({position: button});
     var panel = sdk_panel.Panel({
       width: 300,
-      height: 300,
+      height: 150,
       contentURL: './prompt.html',
       contentScriptFile: './prompt.js',
       position: button
     });
-    panel.port.on('search_word', function(text){
-      mysearch.search_word(text, -1, -1, 1, button);
+    panel.port.on('search_word', function(text, site){
+      mysearch.search_word(text, -1, -1, site, button);
+      panel.hide();
+    });
+    panel.port.on('open_history', function(){
+      sdk_tabs.open('./history_page.html');
       panel.hide();
     });
     panel.show();
