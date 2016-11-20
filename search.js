@@ -68,10 +68,7 @@ exports.search_word = function (raw, pos_x, pos_y, site_num, attach_button){
     loader_panel = sdk_panel.Panel({
         width: 40,
         height: 40,
-        position: {
-            top: pos_y + 20,
-            left: pos_x
-        },
+        position: pos,
         contentURL: './panel_spinner.html',
     });
     loader_panel.show();
