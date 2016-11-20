@@ -1,7 +1,7 @@
 var ss = require('sdk/simple-storage');
-var sdk_prefs = require('sdk/simple-prefs');
-var tabs = require('sdk/tabs');
+var sdk_tabs = require('sdk/tabs');
 var sdk_pagemod = require('sdk/page-mod');
+var sdk_self = require('sdk/self');
 
 // 履歴閲覧ページにスクリプトを追加
 exports.enableHistoryMod = function(){
@@ -23,11 +23,16 @@ var prev_word = '';
 exports.add_word = function(word){
   console.log('history: ' + word);
 
-  // 重複検索
+  // 2回続けて同じ単語を検索した場合は保存しない
   if (word === prev_word){
     return;
   }
   prev_word = word;
+
+  // 単語帳ページからの検索のときは保存しない
+  if (sdk_tabs.activeTab.url == sdk_self.data.url('./history_page.html')){
+    return;
+  }
 
   if (!('history' in  ss.storage)){
     ss.storage.history = [];

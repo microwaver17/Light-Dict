@@ -45,6 +45,7 @@ exports.search_word = function (raw, pos_x, pos_y, site_num, attach_button){
       site = prefs.site_2;
     }
 
+    //ボタンの下に表示される時
     var pos;
     if (pos_x < 0 || pos_y < 0){
       pos = attach_button;
@@ -63,6 +64,7 @@ exports.search_word = function (raw, pos_x, pos_y, site_num, attach_button){
         contentScriptFile: ['./panel_common.js', './panel_'+site+'.js'],
         contentScriptWhen: 'start',
     });
+
     // 読み込み中にスピナーを表示するパネル
     // a spinner panel shows during loading
     loader_panel = sdk_panel.Panel({
@@ -71,9 +73,10 @@ exports.search_word = function (raw, pos_x, pos_y, site_num, attach_button){
         position: pos,
         contentURL: './panel_spinner.html',
     });
-    loader_panel.show();
+
     // 辞書ページの読み込みが終わったら表示する
     // show a dictionary panel after it's contents will be loaded
+    loader_panel.show();
     panel.port.on('loaded', function(){
       if (loader_panel.isShowing){
         panel.show();
