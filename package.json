@@ -40,6 +40,7 @@
             "type": "menulist",
             "value": "Shift",
             "options": [
+                {"value": "None", "label": "割り当てなし"},
                 {"value": "Control", "label": "Controlキー"},
                 {"value": "Shift", "label": "Shiftキー"},
                 {"value": "Alt", "label": "Altキー"},
@@ -69,8 +70,9 @@
             "name": "trigger_2",
             "title": "2つめの検索キー",
             "type": "menulist",
-            "value": "Shift",
+            "value": "None",
             "options": [
+                {"value": "None", "label": "割り当てなし"},
                 {"value": "Control", "label": "Controlキー"},
                 {"value": "Shift", "label": "Shiftキー"},
                 {"value": "Alt", "label": "Altキー"},
