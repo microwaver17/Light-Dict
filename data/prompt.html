@@ -3,9 +3,29 @@
   <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./bootstrap.min.css">
+    
+<style>
+.bar{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #FABC94;
+}
+.container{
+  padding-top: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #FFF5E9;
+}
+</style>
+
   </head>
   <body>
-    <div class="container" style="position: fixed; bottom: 0; width: 100%">
+
+    <div class="bar">
+    </div>
+    <div class="container">
 
       <div class="form-group">
         <label for="query">検索ワード</label>
@@ -14,7 +34,7 @@
       <div class="form-group">
         <button class="btn btn-default" id="dict_1">辞書1</button>
         <button class="btn btn-default" id="dict_2">辞書2</button>
-        <button class="btn btn-warning pull-right" id="history">検索履歴</button>
+        <button class="btn btn-info pull-right" id="history">検索履歴</button>
       </div>
 
     </div>
