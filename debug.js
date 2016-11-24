@@ -20,7 +20,6 @@ exports.enableDebug = function(){
       });
     }});
   
-
   // パネル表示用のスクリプトを通常表示でも適応
   // apply panel's .js and .css to non panel pages
   pagemods.PageMod({

@@ -35,7 +35,7 @@ function handleClick(){
     //panel.show({position: button});
     var panel = sdk_panel.Panel({
       width: 300,
-      height: 145,
+      height: 140,
       contentURL: './prompt.html',
       contentScriptFile: './prompt.js',
       position: button
