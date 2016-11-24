@@ -20,7 +20,7 @@
             "type": "control",
             "label": "開く",
             "name": "openInformation",
-            "title": "単語帳（検索履歴）"
+            "title": "検索履歴"
         },
         {
             "name": "site_1",
@@ -93,6 +93,12 @@
             "type": "integer",
             "value": 300,
             "hidden": false
+        },
+        {
+            "title": "検索履歴を残す",
+            "type": "bool",
+            "name": "enable_history",
+            "value": true
         }
     ]
 }

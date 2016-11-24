@@ -51,3 +51,11 @@ self.port.on('sendHistory', function(data){
     frequency_table.appendChild(tr);
   }
 });
+
+document.getElementById('del_btn').addEventListener('click', function(){
+  var conf = confirm('削除しますか？');
+  if (conf === true){
+    self.port.emit('delete_all_history');
+    location.reload();
+  }
+});
