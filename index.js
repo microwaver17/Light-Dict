@@ -7,18 +7,28 @@ var mybutton = require('./button.js');
 var mysearch = require('./search');
 var myhistory = require('./history');
 
+// アイコンを隠した状態の時にアップデートするとボタンの追加が
+// 失敗してしまう。以下のtry-catchはそのエラーを隠すためのもの
+// である。
+
 // デバッグ用のボタンを追懐
 // add a button for debug purpose
 console.log(sdk_self.version);
 if(sdk_self.version.includes('testing')){
-  mydebug.enableDebug();
+  try{
+    mydebug.enableDebug();
+  }catch(e){
+  }
 }
 
 // すべてのページに検索制御スクリプトを挿入
 mysearch.enableSearchMod();
 
 // ツールバーにボタンを追加
-mybutton.enableButton();
+try{
+  mybutton.enableButton();
+}catch(e){
+}
 
 // 閲覧履歴ページにスクリプトを追加
 myhistory.enableHistoryMod();
