@@ -1,4 +1,4 @@
-var sdk_button = require('sdk/ui/button/action');
+var sdk_ui = require('sdk/ui');
 var sdk_panel = require('sdk/panel');
 var sdk_self = require('sdk/self');
 var sdk_tabs = require('sdk/tabs');
@@ -9,7 +9,7 @@ var mysearch = require('./search.js');
 // ツールバーのボタン
 var button = null;
 exports.enableButton = function(){
-  button = sdk_button.ActionButton({
+  button = sdk_ui.ActionButton({
     id: "light_dict",
     label: "Light Dict",
     icon: "./icon-monodict-48.png",
