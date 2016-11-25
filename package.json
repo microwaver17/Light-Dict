@@ -1,7 +1,7 @@
 {
     "title": "Light Dict",
     "name": "lightdict",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "description": "英単語を辞書サイトで検索してポップアップ表示します。",
     "author": "microwaver17",
     "homepage": "http://mw17.hatenablog.jp/entry/software/lightdict",
@@ -11,8 +11,17 @@
     "engines": {
       "firefox": ">=38.0a1 <=52.0a1"
     },
+    "permissions": {
+      "multiprocess": true
+    },
 
     "preferences": [
+        {
+            "type": "control",
+            "label": "開く",
+            "name": "openInformation",
+            "title": "検索履歴"
+        },
         {
             "name": "site_1",
             "title": "1つめの辞書",
@@ -31,18 +40,13 @@
             "type": "menulist",
             "value": "Shift",
             "options": [
+                {"value": "None", "label": "割り当てなし"},
                 {"value": "Control", "label": "Controlキー"},
                 {"value": "Shift", "label": "Shiftキー"},
                 {"value": "Alt", "label": "Altキー"},
                 {"value": "Meta", "label": "Metaキー"},
                 {"value": "OS", "label": "OSキー"}
             ]
-        },
-        {
-            "name": "use_2",
-            "title": "2つめの辞書を使用する",
-            "type": "bool",
-            "value": false
         },
         {
             "name": "site_2",
@@ -60,8 +64,9 @@
             "name": "trigger_2",
             "title": "2つめの検索キー",
             "type": "menulist",
-            "value": "Shift",
+            "value": "None",
             "options": [
+                {"value": "None", "label": "割り当てなし"},
                 {"value": "Control", "label": "Controlキー"},
                 {"value": "Shift", "label": "Shiftキー"},
                 {"value": "Alt", "label": "Altキー"},
@@ -82,6 +87,12 @@
             "type": "integer",
             "value": 300,
             "hidden": false
+        },
+        {
+            "title": "検索履歴を残す",
+            "type": "bool",
+            "name": "enable_history",
+            "value": true
         }
     ]
 }

@@ -1,5 +1,5 @@
 var tabs = require('sdk/tabs');
-var buttons = require('sdk/ui/button/action');
+var sdk_ui = require('sdk/ui');
 var pagemods = require('sdk/page-mod');
 
 // この関数を呼ぶとデバッグボタンが有効になる
@@ -8,18 +8,18 @@ exports.enableDebug = function(){
 
   // ボタンを追加
   // add a button to the toolbar
-  buttons.ActionButton({
+  sdk_ui.ActionButton({
     id: 'toolbar-button',
     label: 'Light Dict',
     icon: './icon-debug-16.png',
     onClick: function(){
       tabs.open("about:addons");
+      tabs.open("resource://lightdict/data/history_page.html");
       tabs.open({
         url: './debug_page.html',
       });
     }});
   
-
   // パネル表示用のスクリプトを通常表示でも適応
   // apply panel's .js and .css to non panel pages
   pagemods.PageMod({
