@@ -49,12 +49,6 @@
             ]
         },
         {
-            "name": "use_2",
-            "title": "2つめの辞書を使用する",
-            "type": "bool",
-            "value": false
-        },
-        {
             "name": "site_2",
             "title": "2つめの辞書",
             "type": "menulist",

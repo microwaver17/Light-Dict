@@ -15,11 +15,7 @@ exports.enableSearchMod = function(){
     worker.port.on("searchWord", exports.search_word);
     // トリガキーを求められたら返す
     worker.port.on("askTriggerKey", function(){
-      if (prefs.use_2 === true){
-        worker.port.emit('sendTriggerKey', prefs.trigger_1, prefs.trigger_2);
-      }else{
-        worker.port.emit('sendTriggerKey', prefs.trigger_1, "none");
-      }
+      worker.port.emit('sendTriggerKey', prefs.trigger_1, prefs.trigger_2);
     });
   });
 };
